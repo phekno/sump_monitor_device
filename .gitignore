@@ -1,0 +1,32 @@
+# PlatformIO specific
+.pio/
+.vscode/
+lib/readme.txt
+
+# Build artifacts
+build/
+.pioenvs/
+.piolibdeps/
+
+# Compiled files
+*.o
+*.elf
+*.bin
+
+# IDE specific
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Environment and secrets
+.env
+secrets.h
+config_local.h
+
+# Logs
+*.log
+
+# Node modules (if any)
+node_modules/

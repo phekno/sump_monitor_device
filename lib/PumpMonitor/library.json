@@ -1,0 +1,21 @@
+{
+  "name": "PumpMonitor",
+  "version": "1.0.0",
+  "description": "Monitors pump events and tracks usage data for ESP32 sump pump monitoring",
+  "keywords": [
+    "pump",
+    "monitor",
+    "event",
+    "tracking",
+    "esp32",
+    "sump-pump"
+  ],
+  "authors": [
+    {
+      "name": "Sump Monitor Project"
+    }
+  ],
+  "license": "MIT",
+  "frameworks": ["arduino"],
+  "platforms": ["espressif32"]
+}

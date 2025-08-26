@@ -9,6 +9,11 @@
 #include "network_manager.h"
 #include "pump_monitor.h"
 
+// Function declarations
+void printSensorData();
+void sendDataToAPI();
+String getDeviceId();
+
 // Global objects
 NetworkManager networkManager;
 SensorManager sensorManager;
@@ -30,7 +35,7 @@ void setup() {
   networkManager.init();
   
   Serial.println("ESP32 Sump Pump Monitor Initialized");
-  Serial.printf("Device ID: %s\n", DEVICE_ID);
+  Serial.printf("Device ID: %s\n", getDeviceId().c_str());
   Serial.printf("API Endpoint: %s\n", API_ENDPOINT);
   Serial.println("Time(s)\tFlow(GPM)\tCurrent(A)\tDistance(cm)\tBasket(%)");
   Serial.println("---------------------------------------------------------------");
@@ -75,7 +80,7 @@ void sendDataToAPI() {
   SensorData data = sensorManager.getData();
   PumpEventData eventData = pumpMonitor.getCurrentEvent();
   
-  doc["device_id"] = DEVICE_ID;
+  doc["device_id"] = getDeviceId();
   doc["timestamp"] = millis();
   doc["current"] = data.current;
   doc["flow_rate"] = data.flowRate;
@@ -118,4 +123,11 @@ void printSensorData() {
   
   Serial.printf("%.1f\t%.2f\t\t%.2f\t\t%.1f\t\t%.1f%%\n",
     timeSeconds, data.flowRate, data.current, data.distance, data.basketFullness);
+}
+
+String getDeviceId() {
+  String macAddress = WiFi.macAddress();
+  macAddress.replace(":", "");
+  macAddress.toLowerCase();
+  return "sump_pump_" + macAddress;
 }

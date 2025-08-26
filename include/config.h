@@ -10,8 +10,10 @@
 
 // API Configuration
 #define API_ENDPOINT "https://your-api-server.com/api/sensor-data"
-#define DEVICE_ID "sump-pump-01"
 #define MAX_FAILED_REQUESTS 5
+
+// Device ID generation function
+String getDeviceId();
 
 // Pin Definitions
 #define FLOW_SENSOR_PIN 2
